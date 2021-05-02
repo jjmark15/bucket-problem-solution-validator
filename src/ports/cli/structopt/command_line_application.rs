@@ -11,11 +11,11 @@ use crate::ports::persistence::yaml::{YamlProblemReaderAdapter, YamlSolutionRead
 #[derive(StructOpt, Debug)]
 #[structopt(name = "validator")]
 struct ValidatorOptions {
-    /// Problem file path
+    /// YAML problem file path
     #[structopt(short, long, parse(from_os_str))]
     problem_file: PathBuf,
 
-    /// Problem file path
+    /// YAML problem file path
     #[structopt(short, long, parse(from_os_str))]
     solution_file: PathBuf,
 }
