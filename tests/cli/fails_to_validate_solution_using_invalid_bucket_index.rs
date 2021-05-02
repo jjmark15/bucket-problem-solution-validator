@@ -26,7 +26,7 @@ fn fails_to_validate_solution_using_invalid_bucket_index() {
         .with_solution_file(solution_file_path.as_path())
         .assert();
 
-    assert.failure().stderr(contains(
-        "Attempted to perform action against invalid bucket of index '3'",
-    ));
+    assert
+        .failure()
+        .stderr(contains("Attempted use of invalid bucket index (3)"));
 }
