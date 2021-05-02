@@ -2,6 +2,7 @@ use std::error::Error;
 use std::path::PathBuf;
 use std::process::exit;
 
+use owo_colors::OwoColorize;
 use structopt::StructOpt;
 
 use crate::application::ApplicationService;
@@ -24,7 +25,7 @@ fn unwrap_or_exit_app_with_error_message<U, E: Error>(result: Result<U, E>) -> U
     match result {
         Ok(value) => value,
         Err(err) => {
-            eprintln!("{}", err);
+            eprintln!("{}: {}", "error".red(), err);
             exit(1);
         }
     }

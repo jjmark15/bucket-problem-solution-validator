@@ -1,5 +1,7 @@
 use std::path::Path;
 
+use predicates::str::{starts_with, StartsWithPredicate};
+
 pub(crate) use cmd_builder::*;
 
 use crate::helpers::models::{PourAction, Problem, Solution, SolutionAction};
@@ -66,4 +68,12 @@ pub(crate) fn solution_with_incorrect_bucket_index() -> Solution {
         pour(0, 1),
         pour(1, 2),
     ])
+}
+
+pub(crate) fn after_error_prefix_starts_with<P>(pattern: P) -> StartsWithPredicate
+where
+    P: Into<String>,
+{
+    let string = format!("\u{1b}[31merror\u{1b}[0m: {}", pattern.into());
+    starts_with(string)
 }

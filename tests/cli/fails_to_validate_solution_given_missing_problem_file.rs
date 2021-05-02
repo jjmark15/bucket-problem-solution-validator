@@ -2,9 +2,10 @@ use std::path::PathBuf;
 
 use assert_fs::prelude::*;
 use assert_fs::TempDir;
-use predicates::str::contains;
 
-use crate::helpers::{valid_solution, write_solution_to_file, CliCommandBuilder};
+use crate::helpers::{
+    after_error_prefix_starts_with, valid_solution, write_solution_to_file, CliCommandBuilder,
+};
 
 #[test]
 fn fails_to_validate_solution_given_missing_problem_file() {
@@ -18,7 +19,7 @@ fn fails_to_validate_solution_given_missing_problem_file() {
         .with_solution_file(solution_file_path.as_path())
         .assert();
 
-    assert
-        .failure()
-        .stderr(contains("Could not access problem file"));
+    assert.failure().stderr(after_error_prefix_starts_with(
+        "Could not access problem file",
+    ));
 }
