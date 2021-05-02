@@ -9,30 +9,7 @@ use crate::helpers::models::{Problem, Solution};
 use crate::helpers::{fill, pour, write_problem_to_file, write_solution_to_file};
 
 #[test]
-fn validates_correct_simple_solution() {
-    let temp = TempDir::new().unwrap();
-    let problem_file_path: PathBuf = temp.child("problem").to_path_buf();
-    let solution_file_path: PathBuf = temp.child("solution").to_path_buf();
-    let problem = Problem::new(1, vec![1]);
-    let solution = Solution::new(vec![fill(0)]);
-    let mut cmd = Command::cargo_bin("validator").unwrap();
-    write_problem_to_file(problem_file_path.as_path(), &problem).unwrap();
-    write_solution_to_file(solution_file_path.as_path(), &solution).unwrap();
-
-    let assert = cmd
-        .args(&[
-            "--problem-file",
-            problem_file_path.as_os_str().to_str().unwrap(),
-            "--solution-file",
-            solution_file_path.as_os_str().to_str().unwrap(),
-        ])
-        .assert();
-
-    assert.success().stdout(contains("Solution is valid"));
-}
-
-#[test]
-fn validates_correct_complex_solution() {
+fn validates_correct_solution() {
     let temp = TempDir::new().unwrap();
     let problem_file_path: PathBuf = temp.child("problem").to_path_buf();
     let solution_file_path: PathBuf = temp.child("solution").to_path_buf();
