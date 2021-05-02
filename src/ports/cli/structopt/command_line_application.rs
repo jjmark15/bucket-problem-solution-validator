@@ -15,7 +15,7 @@ struct ValidatorOptions {
     #[structopt(short, long, parse(from_os_str))]
     problem_file: PathBuf,
 
-    /// YAML problem file path
+    /// YAML solution file path
     #[structopt(short, long, parse(from_os_str))]
     solution_file: PathBuf,
 }
