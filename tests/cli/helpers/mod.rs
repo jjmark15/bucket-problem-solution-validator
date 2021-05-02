@@ -1,9 +1,11 @@
 use std::path::Path;
 
+pub(crate) use cmd_builder::*;
+
 use crate::helpers::models::{PourAction, Problem, Solution, SolutionAction};
 
+mod cmd_builder;
 pub(crate) mod models;
-pub(crate) mod test_cli;
 
 pub(crate) fn write_solution_to_file(file_path: &Path, solution: &Solution) -> std::io::Result<()> {
     std::fs::write(file_path, serde_yaml::to_string(solution).unwrap())

@@ -4,9 +4,9 @@ use assert_fs::prelude::*;
 use assert_fs::TempDir;
 use predicates::str::contains;
 
-use crate::helpers::test_cli::CliCommandBuilder;
 use crate::helpers::{
     invalid_solution, non_trivial_problem, write_problem_to_file, write_solution_to_file,
+    CliCommandBuilder,
 };
 
 #[test]
