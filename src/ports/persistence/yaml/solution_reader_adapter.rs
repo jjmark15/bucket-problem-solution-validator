@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::path::Path;
 
-use crate::ports::persistence::yaml::error::{FileAccessError, SolutionFormatError};
+use crate::ports::persistence::yaml::error::SolutionFormatError;
 use crate::ports::persistence::yaml::solution::YamlSolution;
 
 pub(crate) struct YamlSolutionReaderAdapter;
@@ -19,8 +19,8 @@ impl YamlSolutionReaderAdapter {
 
 #[derive(Debug, thiserror::Error)]
 pub(crate) enum ReadYamlSolutionError {
-    #[error(transparent)]
-    FileAccess(#[from] FileAccessError),
+    #[error("Could not access solution file")]
+    FileAccess,
     #[error(transparent)]
     Format(#[from] SolutionFormatError),
 }
@@ -33,6 +33,6 @@ impl From<serde_yaml::Error> for ReadYamlSolutionError {
 
 impl From<std::io::Error> for ReadYamlSolutionError {
     fn from(_err: std::io::Error) -> Self {
-        FileAccessError.into()
+        ReadYamlSolutionError::FileAccess
     }
 }

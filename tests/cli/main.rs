@@ -1,3 +1,5 @@
+mod fails_to_validate_solution_given_missing_problem_file;
+mod fails_to_validate_solution_given_missing_solution_file;
 mod fails_to_validate_solution_using_invalid_bucket_index;
 mod helpers;
 mod validates_correct_solution;
