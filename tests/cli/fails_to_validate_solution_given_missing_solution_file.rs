@@ -11,7 +11,7 @@ use crate::helpers::{
 fn fails_to_validate_solution_given_missing_solution_file() {
     let temp = TempDir::new().unwrap();
     let problem_file_path: PathBuf = temp.child("problem").to_path_buf();
-    let solution_file_path: PathBuf = temp.to_path_buf().join("solution");
+    let solution_file_path: PathBuf = temp.child("solution").to_path_buf();
     write_problem_to_file(problem_file_path.as_path(), &non_trivial_problem()).unwrap();
 
     let assert = CliCommandBuilder::new()

@@ -10,7 +10,7 @@ use crate::helpers::{
 #[test]
 fn fails_to_validate_solution_given_missing_problem_file() {
     let temp = TempDir::new().unwrap();
-    let problem_file_path: PathBuf = temp.to_path_buf().join("problem");
+    let problem_file_path: PathBuf = temp.child("problem").to_path_buf();
     let solution_file_path: PathBuf = temp.child("solution").to_path_buf();
     write_solution_to_file(solution_file_path.as_path(), &valid_solution()).unwrap();
 
