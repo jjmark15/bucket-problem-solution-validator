@@ -55,3 +55,15 @@ pub(crate) fn invalid_solution() -> Solution {
         pour(1, 2),
     ])
 }
+
+pub(crate) fn solution_with_incorrect_bucket_index() -> Solution {
+    Solution::new(vec![
+        fill(0),
+        pour(0, 1),
+        pour(1, 3),
+        pour(2, 0),
+        pour(1, 2),
+        pour(0, 1),
+        pour(1, 2),
+    ])
+}

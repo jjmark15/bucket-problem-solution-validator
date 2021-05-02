@@ -1,3 +1,4 @@
+mod fails_to_validate_solution_using_invalid_bucket_index;
 mod helpers;
 mod validates_correct_solution;
 mod validates_incorrect_solution;
