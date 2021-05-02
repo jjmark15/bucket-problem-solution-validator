@@ -1,9 +1,9 @@
 use std::path::Path;
 
 use crate::helpers::models::{PourAction, Problem, Solution, SolutionAction};
-use assert_cmd::Command;
 
 pub(crate) mod models;
+pub(crate) mod test_cli;
 
 pub(crate) fn write_solution_to_file(file_path: &Path, solution: &Solution) -> std::io::Result<()> {
     std::fs::write(file_path, serde_yaml::to_string(solution).unwrap())
@@ -52,8 +52,4 @@ pub(crate) fn invalid_solution() -> Solution {
         pour(0, 1),
         pour(1, 2),
     ])
-}
-
-pub(crate) fn validator_command() -> Command {
-    Command::cargo_bin("validator").unwrap()
 }
