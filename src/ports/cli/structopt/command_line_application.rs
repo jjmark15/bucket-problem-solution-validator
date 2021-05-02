@@ -40,9 +40,10 @@ pub(crate) fn run_cli<AS: ApplicationService>(application_service: &AS) {
     let problem =
         unwrap_or_exit_app_with_error_message(problem_reader.read(opt.problem_file.as_path()));
 
-    let validity: CliValidity = application_service
-        .validate_solution(problem.into(), solution.into())
-        .into();
+    let validity: CliValidity = unwrap_or_exit_app_with_error_message(
+        application_service.validate_solution(problem.into(), solution.into()),
+    )
+    .into();
 
     println!("Solution is {}", validity.description());
 }
