@@ -34,6 +34,7 @@ impl PourAction {
 pub(crate) enum SolutionAction {
     Pour(PourAction),
     Fill(usize),
+    Empty(usize),
 }
 
 #[derive(Debug, Serialize)]
